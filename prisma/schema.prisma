@@ -10,3 +10,12 @@ datasource db {
   url      = env("DATABASE_URL")
 }
 
+model User{
+  id        Int @id @default(autoincrement())
+  name      String 
+  phone     Int? @unique //필수적이지 않은 선택적인 옵션으로 만들고 싶을때 물음표(required가 아닐때), 유저에게 전화번호가 있으면 그 전화번호가 유일해야 할때 @unique
+  email     String? @unique
+  avatar    String?
+  createdAt DateTime @default(now()) // DateTime 날짜를 나타내는 타입, 새 유저가 생성된 시점의 날짜를 가져와 넣어주는 함수
+  updatedAt DateTime @updatedAt
+}
